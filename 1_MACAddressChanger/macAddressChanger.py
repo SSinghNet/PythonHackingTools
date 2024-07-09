@@ -3,18 +3,19 @@
 import subprocess
 import optparse
 
-parser = optparse.OptionParser()
+def changeMac(interface, newMac):
+    print("[+] Changing MAC address for " + interface + " to " + newMac)
 
-parser.add_option("-i", "--interface", dest="interface", help="Interface to change")
-parser.add_option("-m", "--mac", dest="newMac", help="New MAC Address")
+    subprocess.call(["ifconfig", interface, "down"])
+    subprocess.call(["ifconfig", interface, "hw", "ether", newMac])
+    subprocess.call(["ifconfig", interface, "up"])
 
-options, arguments = parser.parse_args()
+if __name__ == "__main__":
+    parser = optparse.OptionParser()
 
-interface = options.interface
-newMac = options.newMac
+    parser.add_option("-i", "--interface", dest="interface", help="Interface to change")
+    parser.add_option("-m", "--mac", dest="newMac", help="New MAC Address")
 
-print("[+] Changing MAC address for " + interface + " to " + newMac)
+    options, arguments = parser.parse_args()
 
-subprocess.call(["ifconfig", interface, "down"])
-subprocess.call(["ifconfig", interface, "hw", "ether", newMac])
-subprocess.call(["ifconfig", interface, "up"])
+    changeMac(options.interface, options.newMac)
