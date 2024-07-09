@@ -31,5 +31,6 @@ if __name__ == "__main__":
     changeMac(options.interface, options.newMac)
     
     ifconfigResult = subprocess.check_output(["ifconfig", options.interface])
+    print(ifconfigResult)
     macSearchResult = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfigResult)
     print(macSearchResult.group(0))
