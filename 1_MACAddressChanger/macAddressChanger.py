@@ -2,6 +2,9 @@
 
 import subprocess
 
-subprocess.call("ifconfig wlan0 down", shell=True)
-subprocess.call("ifconfig wlan0 hw ether 00:11:22:33:44:66", shell=True)
-subprocess.call("ifconfig wlan0 up", shell=True)
+interface = "wlan0"
+newMac = "00:11:22:33:44:77"
+
+subprocess.call("ifconfig " + interface + " down", shell=True)
+subprocess.call("ifconfig " + interface + " hw ether " + newMac, shell=True)
+subprocess.call("ifconfig " + interface + " up", shell=True)
