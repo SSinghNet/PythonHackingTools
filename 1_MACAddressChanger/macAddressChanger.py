@@ -2,6 +2,7 @@
 
 import subprocess
 import optparse
+import re
 
 def getArgs():
     parser = optparse.OptionParser()
@@ -28,3 +29,7 @@ def changeMac(interface, newMac):
 if __name__ == "__main__":
     options = getArgs()
     changeMac(options.interface, options.newMac)
+    
+    ifconfigResult = subprocess.check_output(["ifconfig", options.interface])
+    macSearchResult = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfigResult)
+    print(macSearchResult.group(0))
