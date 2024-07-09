@@ -36,9 +36,16 @@ def getCurrentMac(interface):
     return macSearchResult.group(0)
 
 if __name__ == "__main__":
-    options = getArgs()
-    changeMac(options.interface, options.newMac)
+    args = getArgs()
     
-    currentMac = getCurrentMac(options.interface)
+    currentMac = getCurrentMac(args.interface)
+    print(f"Current MAC: {currentMac}")
     
+    changeMac(args.interface, args.newMac)
+    
+    currentMac = getCurrentMac(args.interface)
+    if currentMac == args.newMac:
+        print (f"[+] MAC address of {args.interface} was successfully changed to {currentMac}")
+    else:
+        print (f"[-] MAC address of {args.interface} was not changed.")
     
