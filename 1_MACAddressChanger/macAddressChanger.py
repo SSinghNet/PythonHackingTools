@@ -32,4 +32,9 @@ if __name__ == "__main__":
     
     ifconfigResult = subprocess.check_output(["ifconfig", options.interface])
     macSearchResult = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(ifconfigResult))
+    
+    if not macSearchResult:
+        print("[-] Could not read MAC Address")
+        exit(1)
+    
     print(macSearchResult.group(0))
