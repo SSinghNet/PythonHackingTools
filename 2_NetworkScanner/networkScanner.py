@@ -8,7 +8,8 @@ def scan(ip):
     
     answered = scapy.srp(arpRequestBroadcast, timeout=1, verbose=False)[0]
     
-    print("IP\t\t\tMAC Address\n")
+    print("IP\t\t\tMAC Address\n--------------------------")
+    
     
     for i in answered:
         print(i[1].psrc + "\t\t" + i[1].hwsrc)
