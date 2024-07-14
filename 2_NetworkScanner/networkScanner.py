@@ -2,6 +2,7 @@
 import scapy.all as scapy
 
 def scan(ip):
-    scapy.arping(ip)
+    arpRequest = scapy.ARP(pdst=ip)
+    
     
 scan("192.168.42.2/24")
