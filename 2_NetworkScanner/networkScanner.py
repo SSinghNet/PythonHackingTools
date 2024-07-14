@@ -27,7 +27,9 @@ def scan(ip):
     return clients
 
 def printResult(clients):
-    print("IP\t\t\tMAC Address\n--------------------------------------------")
+    headers = ["IP", "MAC Address"]
+    rowFormat = "{:>15}" * (len(headers) + 1)
+    print(rowFormat.format("", *headers))
     for client in clients:
         print(f"{client['ip']}\t\t{client['mac']}")
     
