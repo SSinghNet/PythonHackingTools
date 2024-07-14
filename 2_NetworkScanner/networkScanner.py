@@ -31,7 +31,7 @@ def printResult(clients):
     rowFormat = "{:>15}" * (len(headers) + 1)
     print(rowFormat.format("", *headers))
     for client in clients:
-        print(f"{client['ip']}\t\t{client['mac']}")
+        print(rowFormat.format("", [client['ip'], client['mac']]))
     
 options = getArgs()
 clients = scan(options.ipRange)
