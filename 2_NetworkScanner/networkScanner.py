@@ -32,7 +32,7 @@ def printResult(clients):
     print(rowFormat.format("", *headers))
     for client in clients:
         cols = [client['ip'], client['mac']];
-        print(rowFormat.format(headers, *cols))
+        print(rowFormat.format(*headers, *cols))
     
 options = getArgs()
 clients = scan(options.ipRange)
