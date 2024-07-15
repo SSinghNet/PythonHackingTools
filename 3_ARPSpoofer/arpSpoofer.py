@@ -21,6 +21,6 @@ packetsCount = 0
 while True:
     spoof("192.168.42.254", "192.168.42.1")
     spoof("192.168.42.1", "192.168.42.254")
-    print("[+] Packets sent {packetsCount}")
+    print(f"[+] Packets sent: {packetsCount}")
     packetsCount += 2
     time.sleep(1)
