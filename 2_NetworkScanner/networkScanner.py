@@ -27,12 +27,16 @@ def scan(ip):
     return clients
 
 def printResult(clients):
-    headers = ["IP", "MAC Address"]
-    rowFormat = "{:>15}" * (len(headers) + 1)
-    print(rowFormat.format("", *headers))
+    rowFormat = "{: ^16} | {: ^18}"
+    
+    print()
+    
+    print(rowFormat.format("IP", "MAC Address"))
+    print("{:-^16}-|-{:-^18}".format("",""))
     for client in clients:
-        cols = [client['ip'], client['mac']];
-        print(rowFormat.format(*headers, *cols))
+        print(rowFormat.format(client["ip"], client["mac"]))
+    
+    print()
     
 options = getArgs()
 clients = scan(options.ipRange)
