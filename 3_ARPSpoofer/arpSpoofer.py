@@ -21,8 +21,8 @@ packetsCount = 0
 
 try:
     while True:
-        spoof("192.168.42.128", "192.168.42.1")
-        spoof("192.168.42.1", "192.168.42.128")
+        spoof("192.168.42.2", "192.168.42.1")
+        spoof("192.168.42.1", "192.168.42.2")
         
         packetsCount += 2
         print(f"\r[+] Packets sent: {packetsCount}", end="")
