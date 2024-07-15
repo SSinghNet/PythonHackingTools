@@ -1,4 +1,4 @@
-#!usr/bin/env python
+#!usr/bin/env python3
 import optparse
 import scapy.all as scapy
 
@@ -29,14 +29,14 @@ def scan(ip):
 def printResult(clients):
     rowFormat = "{: ^16} | {: ^18}"
     
-    print()
+    print("")
     
     print(rowFormat.format("IP", "MAC Address"))
     print("{:-^16}-|-{:-^18}".format("",""))
     for client in clients:
         print(rowFormat.format(client["ip"], client["mac"]))
     
-    print()
+    print("")
     
 options = getArgs()
 clients = scan(options.ipRange)
