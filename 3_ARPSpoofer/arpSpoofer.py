@@ -1,6 +1,10 @@
 #!usr/bin/env python3
+import logging
+
 import scapy.all as scapy
 import time
+
+logging.getLogger("scapy.runtime").setLevel(40)
 
 def getMac(ip):
     arpRequest = scapy.ARP(pdst=ip)
