@@ -23,7 +23,7 @@ def process_sniffed_packet(packet):
         url = packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
         print(f"[+] HTTP Request >> {url}")
         if packet.haslayer(scapy.Raw):
-            load = packet[scapy.Raw].load
+            load = str(packet[scapy.Raw].load)
             keywords = ["username", "user", "uname", "login", "password", "pass"]
             for key in keywords:
                 if key in load:
