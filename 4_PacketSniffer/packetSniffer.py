@@ -10,7 +10,7 @@ def getArgs():
     
     options, arguments = parser.parse_args()
     
-    if not options.ipRange:
+    if not options.interface:
         parser.error("[-] Please specify a interface, use --help for more info.")
 
     return options
