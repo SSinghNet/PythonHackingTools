@@ -27,7 +27,7 @@ def process_sniffed_packet(packet):
             keywords = ["username", "user", "uname", "login", "password", "pass"]
             for key in keywords:
                 if key in load:
-                    print(f"\n\n[+] Possible username/passowrd > {load}\n\n")
+                    print(f"\n\n[+] Possible username/password > {load}\n\n")
                     break
     
 options = getArgs()
