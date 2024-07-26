@@ -21,6 +21,8 @@ def process_packet(packet):
             del scapyPacket[scapy.UDP].len
             del scapyPacket[scapy.UDP].chksum
             
+            packet.set_payload(str(scapyPacket))
+            
     packet.accept()
 
 queue = netfilterqueue.NetfilterQueue()
