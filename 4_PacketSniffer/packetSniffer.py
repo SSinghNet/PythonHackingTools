@@ -1,4 +1,7 @@
 #!usr/bin/env python3
+
+# port forwarding should be on
+
 import scapy.all as scapy
 from scapy.layers import http
 import optparse
