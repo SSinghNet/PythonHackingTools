@@ -1,6 +1,7 @@
 #!usr/bin/env python3
 
 # port forwarding should be on
+# sysctl -w net.ipv4.ip_forward=1
 
 import scapy.all as scapy
 from scapy.layers import http
