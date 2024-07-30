@@ -3,6 +3,8 @@
 # port forwarding should be on
 # sysctl -w net.ipv4.ip_forward=1
 
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+
 import scapy.all as scapy
 from scapy.layers import http
 import optparse
