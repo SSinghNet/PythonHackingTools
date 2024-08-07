@@ -7,5 +7,5 @@ listener.bind(("192.168.42.128", 4444))
 listener.listen(0)
 print("[+] Waiting for incoming connections.")
 
-listener.accept()
-print("[+] Got a connection.")
+connection, address = listener.accept()
+print("[+] Got a connection from {address}.")
