@@ -19,7 +19,7 @@ class Listener:
         
     def reliable_receive(self):
         json_data = json.dumps(self.connection.recv(1024).decode())
-        return json.loads(json_data)
+        return bytes(json.loads(json_data)).decode()
 
     def execute_remotely(self, command):
         self.reliable_send(command)
