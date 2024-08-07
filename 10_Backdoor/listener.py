@@ -39,6 +39,8 @@ class Listener:
     def run(self):
         while True:
             command = input(">> ")
+            if (len(command.strip()) < 1):
+                continue
             command = command.split(" ")
             print(self.execute_remotely(command))
 
