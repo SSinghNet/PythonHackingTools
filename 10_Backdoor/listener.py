@@ -54,7 +54,7 @@ class Listener:
             command = (command.strip()).split(" ")
             
             try:
-                if command[1] == "upload":
+                if command[0] == "upload":
                     file_content = self.read_file(command[1])
                     command.append(file_content)
                     
